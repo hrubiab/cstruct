@@ -8,6 +8,7 @@
 
 - **linkedlist** - Implementação de lista simplesmente encadeada (singly linked list).
 - **queue** - Implementação do tipo abstrato de dados Fila (ou queue).
+- **stack** - Implementação do tipo abstrato de dados Pilha (ou stack).
 
 ## Uso
 Todos os snippets nesta coleção estão escritos em C e portanto podem ser compilados da maneira usual com seu compilador C de preferência. Utilizei o gcc 10.2.0 para testar todos os códigos.
