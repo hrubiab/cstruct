@@ -1,15 +1,16 @@
 # CStruct
 
-**CStruct** é uma coleção de estruturas de dados, tipos abstratos de dados (TADs), implementações de algoritmos de ordenação e snippets de códigos úteis desenvolvidos por mim durante aulas de Ciência da Computação que utilizam a linguagem C na Univerisdade Federal do Espírito Santo (UFES).
+**CStruct** é uma coleção de estruturas de dados, tipos abstratos de dados (TADs), implementações de algoritmos de ordenação e snippets de códigos úteis desenvolvidos por mim durante aulas de Ciência da Computação que utilizam a linguagem C na Universidade Federal do Espírito Santo (UFES).
 
 **CStruct** is a collection of data structures, abstract data types, implementation of sorting algorithms and useful code snippets developed by me during Computer Science classes using C programming language at the Federal University of Espírito Santo (UFES).
 
 ## Repositório
 
 - **linkedlist** - Implementação de lista simplesmente encadeada (singly linked list).
+- **queue** - Implementação do tipo abstrato de dados Fila (ou queue).
 
 ## Uso
-Todos os snippets nesta coleção estão escritos em C e portanto podem ser compilados da maneira usual com seu compilador Cde preferência. Utilizei o gcc 10.2.0 para testar todos os códigos.
+Todos os snippets nesta coleção estão escritos em C e portanto podem ser compilados da maneira usual com seu compilador C de preferência. Utilizei o gcc 10.2.0 para testar todos os códigos.
 
 Em todos os diretórios inclui um arquivo de teste com utilização básica do código-fonte em questão.
 
