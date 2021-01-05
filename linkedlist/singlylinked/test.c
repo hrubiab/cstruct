@@ -1,5 +1,5 @@
 /**
- * CStruct  https://github.com/henriquerubia/cstruct
+ * CStruct (2019) https://github.com/henriquerubia/cstruct
  * 
  * Copyright (C) Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
  * 
@@ -7,7 +7,6 @@
  */
 
 #include <stdio.h>
-
 #include "linkedlist.h"
 
 // dummy test
