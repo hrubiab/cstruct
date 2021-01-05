@@ -6,7 +6,9 @@
 
 ## Repositório
 
-- **linkedlist** - Implementação de lista simplesmente encadeada (singly linked list).
+- **linkedlist**
+    - **singlylinked**: Implementação de lista simplesmente encadeada (singly linked list).
+    - **doublylinked**: Implementação de lista duplamente encadeada (doubly linked list).
 - **queue** - Implementação do tipo abstrato de dados Fila (ou queue).
 - **stack** - Implementação do tipo abstrato de dados Pilha (ou stack).
 
