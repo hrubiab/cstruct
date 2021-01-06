@@ -49,7 +49,7 @@ void destroystack(Stack *stack) {
  * 
  * Retorna pointer do Info criado. NULL caso falhe.
  */
-Info *createinfo(int i) {
+Info *stackinfo(int i) {
     Info *ptr;
 
     ptr = (Info *) malloc(sizeof(Info));
@@ -65,7 +65,7 @@ Info *createinfo(int i) {
  * 
  * Retorna pointer para nó criado. NULL caso falhe.
  */
-Node *createnode() {
+Node *stacknode() {
     Node *ptr;
     ptr = (Node *) malloc(sizeof(Node));
 
@@ -109,9 +109,9 @@ void printstack(Stack *stack) {
 /**
  * Empilha novo elemento.
  */
-int push (Stack *stack, Info *info) {
+int pushstack(Stack *stack, Info *info) {
     Node *ptr;
-    ptr = createnode();
+    ptr = stacknode();
 
     if (!stack || !ptr) return 0;
 
@@ -126,7 +126,7 @@ int push (Stack *stack, Info *info) {
 /**
  * Desempilha elemento mais recente da pilha.
  */
-Info *pop(Stack *stack) {
+Info *popstack(Stack *stack) {
     Node *ptr;
     Info *info;
 

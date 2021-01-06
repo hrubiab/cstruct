@@ -41,7 +41,7 @@ int isemptydlst(Dlist *lst) {
  * 
  * Retorna pointer para nó criado. NULL caso falhe.
  */
-Node *createnode() {
+Node *dlstnode() {
     Node *ptr;
     ptr = (Node *) malloc(sizeof(Node));
 
@@ -58,7 +58,7 @@ Node *createnode() {
  * 
  * Retorna pointer do Info criado. NULL caso falhe.
  */
-Info *createinfo(int i) {
+Info *dlstinfo(int i) {
     Info *ptr;
 
     ptr = (Info *) malloc(sizeof(Info));
@@ -76,7 +76,7 @@ Info *createinfo(int i) {
  */
 int insertfirstdlst(Dlist *lst, Info *info) {
     Node *ptr;
-    ptr = createnode();
+    ptr = dlstnode();
 
     if (!lst || !ptr) return 0;
 
@@ -118,7 +118,7 @@ Info *delfirstdlst(Dlist *lst) {
  */
 int insertposdlst(Dlist *lst, Info *info, int pos) {
     Node *ptr, *aux;
-    aux = createnode();
+    aux = dlstnode();
     int i;
 
     if (!lst || !ptr) return 0;

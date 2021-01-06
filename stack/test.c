@@ -13,16 +13,16 @@
 int main() {
     Stack *stack = createstack();
 
-    //Adiciona 3 elementos iniciais.
+    // Adiciona 3 elementos iniciais.
 
-    Info *info1 = createinfo(12);
-    push(stack, info1);
+    Info *info1 = stackinfo(12);
+    pushstack(stack, info1);
 
-    Info *info2 = createinfo(43);
-    push(stack, info2);
+    Info *info2 = stackinfo(43);
+    pushstack(stack, info2);
 
-    Info *info3 = createinfo(6);
-    push(stack, info3);
+    Info *info3 = stackinfo(6);
+    pushstack(stack, info3);
 
     // Imprime elementos da pilha
     // Output: TOP [ (6) (43) (12) ] BOTTOM
@@ -30,7 +30,7 @@ int main() {
 
     // Remove um elemento da pilha
     // Output: TOP [ (43) (12) ] BOTTOM
-    pop(stack);
+    popstack(stack);
     printstack(stack);
 
     // Verifica se elemento está na pilha

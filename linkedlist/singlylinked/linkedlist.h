@@ -86,14 +86,14 @@ void printlst(List *lst);
  * 
  * Retorna pointer para nó criado. NULL caso falhe.
  */
-Node *createnode();
+Node *lstnode();
 
 /**
  * Cria struct de informação, aloca memória e define valor.
  * 
  * Retorna pointer do Info criado. NULL caso falhe.
  */
-Info *createinfo(int i);
+Info *lstinfo(int i);
 
 /**
  * Insere nó no começo da lista.

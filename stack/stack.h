@@ -44,14 +44,14 @@ void destroystack(Stack *stack);
  * 
  * Retorna pointer do Info criado. NULL caso falhe.
  */
-Info *createinfo(int i);
+Info *stackinfo(int i);
 
 /**
  * Cria nó, aloca memória e inicializa campos.
  * 
  * Retorna pointer para nó criado. NULL caso falhe.
  */
-Node *createnode();
+Node *stacknode();
 
 /**
  * Verifica se uma pilha está vazia.
@@ -70,12 +70,12 @@ void printstack(Stack *stack);
 /**
  * Empilha novo elemento.
  */
-int push (Stack *stack, Info *info);
+int pushstack(Stack *stack, Info *info);
 
 /**
  * Desempilha elemento mais recente da pilha.
  */
-Info *pop(Stack *stack);
+Info *popstack(Stack *stack);
 
 /**
  * Retorna int indicando tamanho da pilha. -1 caso lista não exista.

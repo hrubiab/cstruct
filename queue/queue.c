@@ -48,7 +48,7 @@ void destroyqueue(Queue *queue) {
  * 
  * Retorna pointer para nó criado. NULL caso falhe.
  */
-Node *createnode() {
+Node *queuenode() {
     Node *ptr;
     ptr = (Node *) malloc(sizeof(Node));
 
@@ -76,7 +76,7 @@ int isemptyqueue(Queue *queue) {
  * 
  * Retorna pointer do Info criado. NULL caso falhe.
  */
-Info *createinfo(int i) {
+Info *queueinfo(int i) {
     Info *ptr;
 
     ptr = (Info *) malloc(sizeof(Info));
@@ -104,7 +104,7 @@ int lenqueue(Queue *queue) {
  */
 int insertqueue(Queue *queue, Info *info) {
     Node *ptr;
-    ptr = createnode();
+    ptr = queuenode();
 
     if (!queue || !ptr) return 0;
 

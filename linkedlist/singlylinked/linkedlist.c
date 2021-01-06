@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "linkedlist.h"
 
 /**
@@ -144,7 +143,7 @@ void printlst(List *lst) {
  * 
  * Retorna pointer para nó criado. NULL caso falhe.
  */
-Node *createnode() {
+Node *lstnode() {
     Node *ptr;
     ptr = (Node *) malloc(sizeof(Node));
 
@@ -161,7 +160,7 @@ Node *createnode() {
  * 
  * Retorna pointer do Info criado. NULL caso falhe.
  */
-Info *createinfo(int i) {
+Info *lstinfo(int i) {
     Info *ptr;
 
     ptr = (Info *) malloc(sizeof(Info));
@@ -179,7 +178,7 @@ Info *createinfo(int i) {
  */
 int insertfirstlst(List *lst, Info *info) {
     Node *ptr;
-    ptr = createnode();
+    ptr = lstnode();
 
     if (!lst || !ptr) return 0;
 
@@ -197,7 +196,7 @@ int insertfirstlst(List *lst, Info *info) {
  */
 int insertlastlst(List *lst, Info *info) {
     Node *ptr, *aux;
-    ptr = createnode();
+    ptr = lstnode();
 
     if (!lst || !ptr) return 0;
     

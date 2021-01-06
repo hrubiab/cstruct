@@ -44,7 +44,7 @@ void destroyqueue(Queue *queue);
  * 
  * Retorna pointer para nó criado. NULL caso falhe.
  */
-Node *createnode();
+Node *queuenode();
 
 /**
  * Verifica se uma fila está vazia.
@@ -54,12 +54,13 @@ Node *createnode();
  * Retorna int. 1 caso esteja vazia, 0 caso contrário.
  */
 int isemptyqueue(Queue *queue);
+
 /**
  * Cria struct de informação, aloca memória e define valor.
  * 
  * Retorna pointer do Info criado. NULL caso falhe.
  */
-Info *createinfo(int i);
+Info *queueinfo(int i);
 
 /**
  * Retorna int indicando tamanho da fila. -1 caso lista não exista.
