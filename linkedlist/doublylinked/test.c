@@ -15,13 +15,13 @@ int main() {
 
     // Adiciona 3 elementos iniciais.
 
-    Info *info1 = dlstinfo(21);
+    InfoDlist *info1 = dlstinfo(21);
     insertfirstdlst(lst, info1);
 
-    Info *info2 = dlstinfo(22);
+    InfoDlist *info2 = dlstinfo(22);
     insertfirstdlst(lst, info2);
 
-    Info *info3 = dlstinfo(24);
+    InfoDlist *info3 = dlstinfo(24);
     insertfirstdlst(lst, info3);
 
     // Imprime os elementos da lista

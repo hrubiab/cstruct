@@ -15,16 +15,16 @@
 
 typedef struct {
     int value;
-} Info;
+} InfoList;
 
 typedef struct tnode {
     struct tnode *next;
-    Info *info;
-} Node;
+    InfoList *info;
+} NodeList;
 
 typedef struct {
     int size;
-    Node *first;
+    NodeList *first;
 } List;
 
 /**
@@ -63,11 +63,11 @@ int isemptylst(List *lst);
  * está contida uma daterminada informação, caso exista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoList com informação a ser buscada.
  * @return int Número positivo indicando qual posição da informação. 
  *             -1 caso não seja encontrada.
  */
-int positionlst(List *lst, Info *info);
+int positionlst(List *lst, InfoList *info);
 
 /**
  * Verifica presença de informação na lista.
@@ -76,10 +76,10 @@ int positionlst(List *lst, Info *info);
  * informação está contida em algum ponto da lista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoList com informação a ser buscada.
  * @return int 1 caso exista na lista, 0 caso contrário.
  */
-int isinlst(List *lst, Info *info);
+int isinlst(List *lst, InfoList *info);
 
 /** 
  * 
@@ -90,10 +90,10 @@ int isinlst(List *lst, Info *info);
  * caso exista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser buscada. 
- * @return Info* pointer contendo nó encontrado, ou NULL caso não exista.
+ * @param info ponteiro InfoList com informação a ser buscada. 
+ * @return InfoList* pointer contendo nó encontrado, ou NULL caso não exista.
  */
-Info *findlst(List *lst, Info *info);
+InfoList *findlst(List *lst, InfoList *info);
 
 /**
  * Ver tamanho da lista.
@@ -121,9 +121,9 @@ void printlst(List *lst);
  * Cria novo nó alocando memória e inicializando campos da
  * estrutura de dados para uso posterior.
  * 
- * @return Node* pointer para nó criado, ou NULL caso falhe.
+ * @return NodeList* pointer para nó criado, ou NULL caso falhe.
  */
-Node *lstnode();
+NodeList *lstnode();
 
 /**
  * Cria estrutura de informação.
@@ -132,52 +132,52 @@ Node *lstnode();
  * alocando memória e definindo valor do nó de dados.
  * 
  * @param i valor inteiro a ser guardado na estrutura de informação.
- * @return Info* pointer, ou NULL caso falhe.
+ * @return InfoList* pointer, ou NULL caso falhe.
  */
-Info *lstinfo(int i);
+InfoList *lstinfo(int i);
 
 /**
  * Insere nó no inicio da lista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser gravada em nó.
+ * @param info ponteiro InfoList com informação a ser gravada em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int insertfirstlst(List *lst, Info *info);
+int insertfirstlst(List *lst, InfoList *info);
 
 /**
  * Insere nó no fim da lista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser gravado em nó.
+ * @param info ponteiro InfoList com informação a ser gravado em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int insertlastlst(List *lst, Info *info);
+int insertlastlst(List *lst, InfoList *info);
 
 /**
  * Remove primeiro elemento da lista.
  * 
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoList* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *delfirstlst(List *lst);
+InfoList *delfirstlst(List *lst);
 
 /**
  * Remove elemento da lista a partir de informação armazenada.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser gravada em nó.
- * @return Info* do elemento removido, ou NULL caso falhe.
+ * @param info ponteiro InfoList com informação a ser gravada em nó.
+ * @return InfoList* do elemento removido, ou NULL caso falhe.
  */
-Info *delinfolst(List *lst, Info *info);
+InfoList *delinfolst(List *lst, InfoList *info);
 
 /**
  * Remove elemento em uma posição da lista.
  * 
  * @param lst ponteiro List da lista encadeada.
  * @param pos inteiro com posição a ser removida.
- * @return Info* do elemento removido, ou NULL caso falhe.
+ * @return InfoList* do elemento removido, ou NULL caso falhe.
  */
-Info *delpositionlst(List *lst, int pos);
+InfoList *delpositionlst(List *lst, int pos);
 
 /**
  * Inverte a lista encadeada.
@@ -200,8 +200,8 @@ void sortlst(List *lst);
  * Remove elemento na última posição da lista.
  *
  * @param lst ponteiro List da lista encadeada.s
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoList* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *dellastlst(List *lst);
+InfoList *dellastlst(List *lst);
 
 #endif

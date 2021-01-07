@@ -38,7 +38,7 @@ Queue *createqueue() {
  * @param queue ponteiro Queue da fila.
  */
 void destroyqueue(Queue *queue) {
-    Node *ptr;
+    NodeQueue *ptr;
 
     if (!queue) return;
 
@@ -57,11 +57,11 @@ void destroyqueue(Queue *queue) {
  * Cria novo nó alocando memória e inicializando campos da
  * estrutura de dados para uso posterior.
  * 
- * @return Node* pointer para nó criado, ou NULL caso falhe.
+ * @return NodeQueue* pointer para nó criado, ou NULL caso falhe.
  */
-Node *queuenode() {
-    Node *ptr;
-    ptr = (Node *) malloc(sizeof(Node));
+NodeQueue *queuenode() {
+    NodeQueue *ptr;
+    ptr = (NodeQueue *) malloc(sizeof(NodeQueue));
 
     if (ptr) {
         ptr->info = NULL;
@@ -89,12 +89,12 @@ int isemptyqueue(Queue *queue) {
  * alocando memória e definindo valor do nó de dados.
  * 
  * @param i valor inteiro a ser guardado na estrutura de informação.
- * @return Info* pointer, ou NULL caso falhe.
+ * @return InfoQueue* pointer, ou NULL caso falhe.
  */
-Info *queueinfo(int i) {
-    Info *ptr;
+InfoQueue *queueinfo(int i) {
+    InfoQueue *ptr;
 
-    ptr = (Info *) malloc(sizeof(Info));
+    ptr = (InfoQueue *) malloc(sizeof(InfoQueue));
     if (ptr) {
         ptr->value = i;
         return ptr;
@@ -121,11 +121,11 @@ int lenqueue(Queue *queue) {
  * Insere elemento na fila.
  * 
  * @param queue ponteiro Queue da fila.
- * @param info ponteiro Info com informação a ser gravada em nó.
+ * @param info ponteiro InfoQueue com informação a ser gravada em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int insertqueue(Queue *queue, Info *info) {
-    Node *ptr;
+int insertqueue(Queue *queue, InfoQueue *info) {
+    NodeQueue *ptr;
     ptr = queuenode();
 
     if (!queue || !ptr) return 0;
@@ -145,11 +145,11 @@ int insertqueue(Queue *queue, Info *info) {
  * Remove elemento da fila.
  * 
  * @param queue ponteiro Queue para fila.
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoQueue* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *removequeue(Queue *queue) {
-    Node *ptr;
-    Info *info;
+InfoQueue *removequeue(Queue *queue) {
+    NodeQueue *ptr;
+    InfoQueue *info;
 
     if (isemptyqueue(queue)) return NULL;
 
@@ -169,11 +169,11 @@ Info *removequeue(Queue *queue) {
  * informação está contida em algum ponto da fila.
  * 
  * @param queue ponteiro Queue da fila.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoQueue com informação a ser buscada.
  * @return int 1 caso exista na lista, 0 caso contrário.
  */
-int isinqueue(Queue *queue, Info *info) {
-    Node *ptr;
+int isinqueue(Queue *queue, InfoQueue *info) {
+    NodeQueue *ptr;
 
     if (isemptyqueue(queue)) return 0;
 
@@ -194,7 +194,7 @@ int isinqueue(Queue *queue, Info *info) {
  * @param queue ponteirro Queue para fila.
  */
 void printqueue(Queue *queue) {
-    Node *ptr;
+    NodeQueue *ptr;
 
     if (isemptyqueue(queue)) return;
 
@@ -214,9 +214,9 @@ void printqueue(Queue *queue) {
  * @param queue ponteiro Queue da fila.
  */
 void reversequeue(Queue *queue) {
-    Node *prev = NULL;
-    Node *current = queue->first;
-    Node *next;
+    NodeQueue *prev = NULL;
+    NodeQueue *current = queue->first;
+    NodeQueue *next;
 
     if (isemptyqueue(queue)) return;
 

@@ -14,13 +14,13 @@ int main() {
     List *lst = createlst();
 
     // Cria 3 nós.
-    Info *info1 = lstinfo(87);
+    InfoList *info1 = lstinfo(87);
     insertlastlst(lst, info1);
 
-    Info *info2 = lstinfo(23);
+    InfoList *info2 = lstinfo(23);
     insertlastlst(lst, info2);
 
-    Info *info3 = lstinfo(543);
+    InfoList *info3 = lstinfo(543);
     insertlastlst(lst, info3);
 
     // Imprime lista com elementos adicionados.

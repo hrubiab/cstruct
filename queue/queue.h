@@ -15,16 +15,16 @@
 
 typedef struct {
     int value;
-} Info;
+} InfoQueue;
 
 typedef struct tnode {
     struct tnode *next;
-    Info *info;
-} Node;
+    InfoQueue *info;
+} NodeQueue;
 
 typedef struct {
     int size;
-    Node *first, *last;
+    NodeQueue *first, *last;
 } Queue;
 
 /**
@@ -53,9 +53,9 @@ void destroyqueue(Queue *queue);
  * Cria novo nó alocando memória e inicializando campos da
  * estrutura de dados para uso posterior.
  * 
- * @return Node* pointer para nó criado, ou NULL caso falhe.
+ * @return NodeQueue* pointer para nó criado, ou NULL caso falhe.
  */
-Node *queuenode();
+NodeQueue *queuenode();
 
 /**
  * Verifica se uma fila está vazia.
@@ -73,9 +73,9 @@ int isemptyqueue(Queue *queue);
  * alocando memória e definindo valor do nó de dados.
  * 
  * @param i valor inteiro a ser guardado na estrutura de informação.
- * @return Info* pointer, ou NULL caso falhe.
+ * @return InfoQueue* pointer, ou NULL caso falhe.
  */
-Info *queueinfo(int i);
+InfoQueue *queueinfo(int i);
 
 /**
  * Ver tamanho da fila.
@@ -93,18 +93,18 @@ int lenqueue(Queue *queue);
  * Insere elemento na fila.
  * 
  * @param queue ponteiro Queue da fila.
- * @param info ponteiro Info com informação a ser gravada em nó.
+ * @param info ponteiro InfoQueue com informação a ser gravada em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int insertqueue(Queue *queue, Info *info);
+int insertqueue(Queue *queue, InfoQueue *info);
 
 /**
  * Remove elemento da fila.
  * 
  * @param queue ponteiro Queue para fila.
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoQueue* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *removequeue(Queue *queue);
+InfoQueue *removequeue(Queue *queue);
 
 /**
  * Verifica presença de informação na fila.
@@ -113,10 +113,10 @@ Info *removequeue(Queue *queue);
  * informação está contida em algum ponto da fila.
  * 
  * @param queue ponteiro Queue da fila.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoQueue com informação a ser buscada.
  * @return int 1 caso exista na lista, 0 caso contrário.
  */
-int isinqueue(Queue *queue, Info *info);
+int isinqueue(Queue *queue, InfoQueue *info);
 
 /**
  * Imprime elementos de fila.

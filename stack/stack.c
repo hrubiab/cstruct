@@ -39,7 +39,7 @@ Stack *createstack() {
  * @param stack ponteiro Stack da pilha.
  */
 void destroystack(Stack *stack) {
-    Node *ptr;
+    NodeStack *ptr;
 
     if (!stack) return;
 
@@ -59,12 +59,12 @@ void destroystack(Stack *stack) {
  * alocando memória e definindo valor do nó de dados.
  * 
  * @param i valor inteiro a ser guardado na estrutura de informação.
- * @return Info* pointer, ou NULL caso falhe.
+ * @return InfoStack* pointer, ou NULL caso falhe.
  */
-Info *stackinfo(int i) {
-    Info *ptr;
+InfoStack *stackinfo(int i) {
+    InfoStack *ptr;
 
-    ptr = (Info *) malloc(sizeof(Info));
+    ptr = (InfoStack *) malloc(sizeof(InfoStack));
     if (ptr) {
         ptr->value = i;
         return ptr;
@@ -78,11 +78,11 @@ Info *stackinfo(int i) {
  * Cria novo nó alocando memória e inicializando campos da
  * estrutura de dados para uso posterior.
  * 
- * @return Node* pointer para nó criado, ou NULL caso falhe.
+ * @return NodeStack* pointer para nó criado, ou NULL caso falhe.
  */
-Node *stacknode() {
-    Node *ptr;
-    ptr = (Node *) malloc(sizeof(Node));
+NodeStack *stacknode() {
+    NodeStack *ptr;
+    ptr = (NodeStack *) malloc(sizeof(NodeStack));
 
     if (ptr) {
         ptr->info = NULL;
@@ -112,7 +112,7 @@ int isemptystack(Stack *stack) {
  * @param stack ponteirro Stack para pilha.
  */
 void printstack(Stack *stack) {
-    Node *ptr;
+    NodeStack *ptr;
 
     if (isemptystack(stack)) return;
 
@@ -130,11 +130,11 @@ void printstack(Stack *stack) {
  * Empilha novo elemento.
  * 
  * @param stack ponteiro Stack da pilha.
- * @param info ponteiro Info com informação a ser gravada em nó.
+ * @param info ponteiro InfoStack com informação a ser gravada em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int pushstack(Stack *stack, Info *info) {
-    Node *ptr;
+int pushstack(Stack *stack, InfoStack *info) {
+    NodeStack *ptr;
     ptr = stacknode();
 
     if (!stack || !ptr) return 0;
@@ -151,11 +151,11 @@ int pushstack(Stack *stack, Info *info) {
  * Desempilha elemento.
  * 
  * @param stack ponteiro Stack da pilha.
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoStack* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *popstack(Stack *stack) {
-    Node *ptr;
-    Info *info;
+InfoStack *popstack(Stack *stack) {
+    NodeStack *ptr;
+    InfoStack *info;
 
     if (isemptystack(stack)) return NULL;
 
@@ -190,11 +190,11 @@ int lenstack(Stack *stack) {
  * informação está contida em algum ponto da pilha.
  * 
  * @param stack ponteiro Stack da pilha.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoStack com informação a ser buscada.
  * @return int 1 caso exista na lista, 0 caso contrário.
  */
-int isinstack(Stack *stack, Info *info) {
-    Node *ptr;
+int isinstack(Stack *stack, InfoStack *info) {
+    NodeStack *ptr;
 
     if (isemptystack(stack)) return 0;
 

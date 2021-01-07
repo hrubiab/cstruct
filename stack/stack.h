@@ -15,16 +15,16 @@
 
 typedef struct {
     int value;
-} Info;
+} InfoStack;
 
 typedef struct tnode {
     struct tnode *next;
-    Info *info;
-} Node;
+    InfoStack *info;
+} NodeStack;
 
 typedef struct {
     int size;
-    Node *first;
+    NodeStack *first;
 } Stack;
 
 /**
@@ -54,9 +54,9 @@ void destroystack(Stack *stack);
  * alocando memória e definindo valor do nó de dados.
  * 
  * @param i valor inteiro a ser guardado na estrutura de informação.
- * @return Info* pointer, ou NULL caso falhe.
+ * @return InfoStack* pointer, ou NULL caso falhe.
  */
-Info *stackinfo(int i);
+InfoStack *stackinfo(int i);
 
 /**
  * Cria node.
@@ -64,9 +64,9 @@ Info *stackinfo(int i);
  * Cria novo nó alocando memória e inicializando campos da
  * estrutura de dados para uso posterior.
  * 
- * @return Node* pointer para nó criado, ou NULL caso falhe.
+ * @return NodeStack* pointer para nó criado, ou NULL caso falhe.
  */
-Node *stacknode();
+NodeStack *stacknode();
 
 /**
  * Verifica se pilha está vazia.
@@ -91,18 +91,18 @@ void printstack(Stack *stack);
  * Empilha novo elemento.
  * 
  * @param stack ponteiro Stack da pilha.
- * @param info ponteiro Info com informação a ser gravada em nó.
+ * @param info ponteiro InfoStack com informação a ser gravada em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int pushstack(Stack *stack, Info *info);
+int pushstack(Stack *stack, InfoStack *info);
 
 /**
  * Desempilha elemento.
  * 
  * @param stack ponteiro Stack da pilha.
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoStack* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *popstack(Stack *stack);
+InfoStack *popstack(Stack *stack);
 
 /**
  * Ver tamanho da pilha.
@@ -123,9 +123,9 @@ int lenstack(Stack *stack);
  * informação está contida em algum ponto da pilha.
  * 
  * @param stack ponteiro Stack da pilha.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoStack com informação a ser buscada.
  * @return int 1 caso exista na lista, 0 caso contrário.
  */
-int isinstack(Stack *stack, Info *info);
+int isinstack(Stack *stack, InfoStack *info);
 
 #endif

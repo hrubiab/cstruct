@@ -39,7 +39,7 @@ List *createlst() {
  * @param lst ponteiro List da lista encadeada.
  */
 void destroylst(List *lst) {
-    Node *ptr;
+    NodeList *ptr;
 
     if (!lst) return;
 
@@ -70,13 +70,13 @@ int isemptylst(List *lst) {
  * está contida uma daterminada informação, caso exista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoList com informação a ser buscada.
  * @return int Número positivo indicando qual posição da informação. 
  *             -1 caso não seja encontrada.
  */
-int positionlst(List *lst, Info *info) {
+int positionlst(List *lst, InfoList *info) {
     int pos;
-    Node *ptr;
+    NodeList *ptr;
 
     if (isemptylst(lst)) return -1;
     pos = 0;
@@ -97,11 +97,11 @@ int positionlst(List *lst, Info *info) {
  * informação está contida em algum ponto da lista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser buscada.
+ * @param info ponteiro InfoList com informação a ser buscada.
  * @return int 1 caso exista na lista, 0 caso contrário.
  */
-int isinlst(List *lst, Info *info) {
-    Node *ptr;
+int isinlst(List *lst, InfoList *info) {
+    NodeList *ptr;
 
     if (isemptylst(lst)) return 0;
     ptr = lst->first;
@@ -120,11 +120,11 @@ int isinlst(List *lst, Info *info) {
  * caso exista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser buscada. 
- * @return Info* pointer contendo nó encontrado, ou NULL caso não exista.
+ * @param info ponteiro InfoList com informação a ser buscada. 
+ * @return InfoList* pointer contendo nó encontrado, ou NULL caso não exista.
  */
-Info *findlst(List *lst, Info *info) {
-    Node *ptr;
+InfoList *findlst(List *lst, InfoList *info) {
+    NodeList *ptr;
 
     if (isemptylst(lst)) return NULL;
     
@@ -158,7 +158,7 @@ int lenlst(List *lst) {
  * @param lst ponteirro List para lista encadeada.
  */
 void printlst(List *lst) {
-    Node *ptr;
+    NodeList *ptr;
 
     if (isemptylst(lst)) return;
 
@@ -178,11 +178,11 @@ void printlst(List *lst) {
  * Cria novo nó alocando memória e inicializando campos da
  * estrutura de dados para uso posterior.
  * 
- * @return Node* pointer para nó criado, ou NULL caso falhe.
+ * @return NodeList* pointer para nó criado, ou NULL caso falhe.
  */
-Node *lstnode() {
-    Node *ptr;
-    ptr = (Node *) malloc(sizeof(Node));
+NodeList *lstnode() {
+    NodeList *ptr;
+    ptr = (NodeList *) malloc(sizeof(NodeList));
 
     if (ptr) {
         ptr->info = NULL;
@@ -199,12 +199,12 @@ Node *lstnode() {
  * alocando memória e definindo valor do nó de dados.
  * 
  * @param i valor inteiro a ser guardado na estrutura de informação.
- * @return Info* pointer, ou NULL caso falhe.
+ * @return InfoList* pointer, ou NULL caso falhe.
  */
-Info *lstinfo(int i) {
-    Info *ptr;
+InfoList *lstinfo(int i) {
+    InfoList *ptr;
 
-    ptr = (Info *) malloc(sizeof(Info));
+    ptr = (InfoList *) malloc(sizeof(InfoList));
     if (ptr) {
         ptr->value = i;
         return ptr;
@@ -216,11 +216,11 @@ Info *lstinfo(int i) {
  * Insere nó no inicio da lista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser gravada em nó.
+ * @param info ponteiro InfoList com informação a ser gravada em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int insertfirstlst(List *lst, Info *info) {
-    Node *ptr;
+int insertfirstlst(List *lst, InfoList *info) {
+    NodeList *ptr;
     ptr = lstnode();
 
     if (!lst || !ptr) return 0;
@@ -236,11 +236,11 @@ int insertfirstlst(List *lst, Info *info) {
  * Insere nó no fim da lista.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser gravado em nó.
+ * @param info ponteiro InfoList com informação a ser gravado em nó.
  * @return int 1 para sucesso, 0 caso contrário.
  */
-int insertlastlst(List *lst, Info *info) {
-    Node *ptr, *aux;
+int insertlastlst(List *lst, InfoList *info) {
+    NodeList *ptr, *aux;
     ptr = lstnode();
 
     if (!lst || !ptr) return 0;
@@ -262,11 +262,11 @@ int insertlastlst(List *lst, Info *info) {
  * Remove primeiro elemento da lista.
  * 
  * @param lst ponteiro List para lista encadeada.
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoList* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *delfirstlst(List *lst) {
-    Node *ptr;
-    Info *info;
+InfoList *delfirstlst(List *lst) {
+    NodeList *ptr;
+    InfoList *info;
 
     if (isemptylst(lst)) return NULL;
 
@@ -284,12 +284,12 @@ Info *delfirstlst(List *lst) {
  * Remove elemento da lista a partir de informação armazenada.
  * 
  * @param lst ponteiro List da lista encadeada.
- * @param info ponteiro Info com informação a ser gravada em nó.
- * @return Info* do elemento removido, ou NULL caso falhe.
+ * @param info ponteiro InfoList com informação a ser gravada em nó.
+ * @return InfoList* do elemento removido, ou NULL caso falhe.
  */
-Info *delinfolst(List *lst, Info *info) {
-    Node *ptr, *aptr;
-    Info *ainfo;
+InfoList *delinfolst(List *lst, InfoList *info) {
+    NodeList *ptr, *aptr;
+    InfoList *ainfo;
 
     ptr = lst->first;
 
@@ -315,11 +315,11 @@ Info *delinfolst(List *lst, Info *info) {
  * 
  * @param lst ponteiro List da lista encadeada.
  * @param pos inteiro com posição a ser removida.
- * @return Info* do elemento removido, ou NULL caso falhe.
+ * @return InfoList* do elemento removido, ou NULL caso falhe.
  */
-Info *delpositionlst(List *lst, int pos) {
-    Node *aptr, *ptr;
-    Info *info;
+InfoList *delpositionlst(List *lst, int pos) {
+    NodeList *aptr, *ptr;
+    InfoList *info;
     int count = 1;
 
     if (isemptylst(lst) || pos > lst->size || pos <= 0) {
@@ -350,9 +350,9 @@ Info *delpositionlst(List *lst, int pos) {
  * @param lst ponteiro List da lista encadeada.
  */
 void reverselst(List *lst) {
-    Node *prev = NULL;
-    Node *current = lst->first;
-    Node *next;
+    NodeList *prev = NULL;
+    NodeList *current = lst->first;
+    NodeList *next;
 
     if (isemptylst(lst)) return;
 
@@ -376,9 +376,9 @@ void reverselst(List *lst) {
  */
 void sortlst(List *lst) {
     int i, j, k;
-    Info *tempInfo;
-    Node *current;
-    Node *next;
+    InfoList *tempInfo;
+    NodeList *current;
+    NodeList *next;
 
     k = lst->size;
     if (isemptylst(lst)) return;
@@ -402,11 +402,11 @@ void sortlst(List *lst) {
  * Remove elemento na última posição da lista.
  *
  * @param lst ponteiro List da lista encadeada.s
- * @return Info* pointer do elemento removido, ou NULL caso falhe.
+ * @return InfoList* pointer do elemento removido, ou NULL caso falhe.
  */
-Info *dellastlst(List *lst) {
-    Node *ptr, *aptr;
-    Info *info;
+InfoList *dellastlst(List *lst) {
+    NodeList *ptr, *aptr;
+    InfoList *info;
 
     if (isemptylst(lst)) return NULL;
 

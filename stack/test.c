@@ -15,13 +15,13 @@ int main() {
 
     // Adiciona 3 elementos iniciais.
 
-    Info *info1 = stackinfo(12);
+    InfoStack *info1 = stackinfo(12);
     pushstack(stack, info1);
 
-    Info *info2 = stackinfo(43);
+    InfoStack *info2 = stackinfo(43);
     pushstack(stack, info2);
 
-    Info *info3 = stackinfo(6);
+    InfoStack *info3 = stackinfo(6);
     pushstack(stack, info3);
 
     // Imprime elementos da pilha

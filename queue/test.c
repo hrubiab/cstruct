@@ -13,13 +13,13 @@ int main() {
     Queue *queue = createqueue();
 
     // Cria 3 elementos iniciais
-    Info *info1 = queueinfo(33);
+    InfoQueue *info1 = queueinfo(33);
     insertqueue(queue, info1);
 
-    Info *info2 = queueinfo(65);
+    InfoQueue *info2 = queueinfo(65);
     insertqueue(queue, info2);
 
-    Info *info3 = queueinfo(122);
+    InfoQueue *info3 = queueinfo(122);
     insertqueue(queue, info3);
 
     // Imprime elementos na fila
