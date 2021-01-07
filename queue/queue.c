@@ -1,7 +1,7 @@
 /**
- * CStruct (2019) https://github.com/henriquerubia/cstruct
+ * CStruct (C) 2019-2021 https://github.com/henriquerubia/cstruct
  * 
- * Copyright (C) Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
+ * @author Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
  * 
  * See LICENSE for terms and licensing notice.
  */
@@ -11,9 +11,12 @@
 #include "queue.h"
 
 /**
- * Cria cabeça de uma fila, aloca memória e inicializa campos da struct.
+ * Cria cabeça de fila.
  * 
- * Retorna pointer para fila criada.
+ * Essa função aloca memória e inicializa campos da struct
+ * para posterior utilização em fila.
+ * 
+ * @return Queue* pointer para lista criada.
  */
 Queue *createqueue() {
     Queue *ptr;
@@ -27,7 +30,12 @@ Queue *createqueue() {
 }
 
 /**
- * Deleta uma fila e libera memória alocada para todos os nós contidos na fila.
+ * Destroi fila.
+ * 
+ * Deleta umafila liberando a memória alocada para a cabeça
+ * da fila e todos os nós que estão ligados a ela.
+ * 
+ * @param queue ponteiro Queue da fila.
  */
 void destroyqueue(Queue *queue) {
     Node *ptr;
@@ -44,9 +52,12 @@ void destroyqueue(Queue *queue) {
 }
 
 /**
- * Cria nó, aloca memória e inicializa campos.
+ * Cria node.
  * 
- * Retorna pointer para nó criado. NULL caso falhe.
+ * Cria novo nó alocando memória e inicializando campos da
+ * estrutura de dados para uso posterior.
+ * 
+ * @return Node* pointer para nó criado, ou NULL caso falhe.
  */
 Node *queuenode() {
     Node *ptr;
@@ -72,9 +83,13 @@ int isemptyqueue(Queue *queue) {
 }
 
 /**
- * Cria struct de informação, aloca memória e define valor.
+ * Cria estrutura de informação.
  * 
- * Retorna pointer do Info criado. NULL caso falhe.
+ * Cria nova struct para armazenamento de informação,
+ * alocando memória e definindo valor do nó de dados.
+ * 
+ * @param i valor inteiro a ser guardado na estrutura de informação.
+ * @return Info* pointer, ou NULL caso falhe.
  */
 Info *queueinfo(int i) {
     Info *ptr;
@@ -88,9 +103,14 @@ Info *queueinfo(int i) {
 }
 
 /**
- * Retorna int indicando tamanho da fila. -1 caso lista não exista.
+ * Ver tamanho da fila.
  * 
- * TODO: Realizar verificação de tamanho sem depender a variável size.
+ * Indica qual o tamanho da fila usando informações
+ * contidas na cabeça da própria fila.
+ * 
+ * @todo Realizar verificação de tamanho sem depender a variável size.
+ * @param queue ponteiro Queue da fila.
+ * @return int Número indicando tamanho da fila. -1 caso fila não exista.
  */
 int lenqueue(Queue *queue) {
     if (!queue) return -1;
@@ -98,9 +118,11 @@ int lenqueue(Queue *queue) {
 }
 
 /**
- * Insere elemento ao fim de uma fila.
+ * Insere elemento na fila.
  * 
- * Retorna int. 1 em caso de sucesso, 0 caso contrário.
+ * @param queue ponteiro Queue da fila.
+ * @param info ponteiro Info com informação a ser gravada em nó.
+ * @return int 1 para sucesso, 0 caso contrário.
  */
 int insertqueue(Queue *queue, Info *info) {
     Node *ptr;
@@ -120,9 +142,10 @@ int insertqueue(Queue *queue, Info *info) {
 }
 
 /**
- * Remove um elemento no inicio da fila.
+ * Remove elemento da fila.
  * 
- * Retorna pointer para Info do elemento removido. NULL caso falhe.
+ * @param queue ponteiro Queue para fila.
+ * @return Info* pointer do elemento removido, ou NULL caso falhe.
  */
 Info *removequeue(Queue *queue) {
     Node *ptr;
@@ -140,9 +163,14 @@ Info *removequeue(Queue *queue) {
 }
 
 /**
- * Verifica se uma determinada informação está contida na fila.
+ * Verifica presença de informação na fila.
  * 
- * Retorna int. 1 caso esteja contido, 0 caso contrário.
+ * Percorre a fila para determinar se uma dada
+ * informação está contida em algum ponto da fila.
+ * 
+ * @param queue ponteiro Queue da fila.
+ * @param info ponteiro Info com informação a ser buscada.
+ * @return int 1 caso exista na lista, 0 caso contrário.
  */
 int isinqueue(Queue *queue, Info *info) {
     Node *ptr;
@@ -158,7 +186,12 @@ int isinqueue(Queue *queue, Info *info) {
 }
 
 /**
- * Imprime os elementos da fila.
+ * Imprime elementos de fila.
+ * 
+ * Percorre uma fila e imprime todos os seus
+ * elementos em linha.
+ * 
+ * @param queue ponteirro Queue para fila.
  */
 void printqueue(Queue *queue) {
     Node *ptr;
@@ -177,6 +210,8 @@ void printqueue(Queue *queue) {
 
 /**
  * Inverte a fila.
+ * 
+ * @param queue ponteiro Queue da fila.
  */
 void reversequeue(Queue *queue) {
     Node *prev = NULL;

@@ -1,7 +1,7 @@
 /**
- * CStruct (2019) https://github.com/henriquerubia/cstruct
+ * CStruct (C) 2019-2021 https://github.com/henriquerubia/cstruct
  * 
- * Copyright (C) Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
+ * @author Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
  * 
  * See LICENSE for terms and licensing notice.
  */
@@ -11,9 +11,12 @@
 #include "stack.h"
 
 /**
- * Cria cabeça de uma pilha, aloca memória e inicializa campos da struct.
+ * Cria cabeça de pilha.
  * 
- * Retorna pointer para pilha criada.
+ * Essa função aloca memória e inicializa campos da struct
+ * para posterior utilização em pilha.
+ * 
+ * @return Stack* pointer para pilha criada.
  */
 Stack *createstack() {
     Stack *ptr;
@@ -28,7 +31,12 @@ Stack *createstack() {
 }
 
 /**
- * Deleta uma pilha e libera memória alocada de todos os nós contidos nela.
+ * Destroi pilha.
+ * 
+ * Deleta uma pilha liberando a memória alocada para
+ * a cabeça da pilha e todos os nós que estão ligados a ela.
+ * 
+ * @param stack ponteiro Stack da pilha.
  */
 void destroystack(Stack *stack) {
     Node *ptr;
@@ -45,9 +53,13 @@ void destroystack(Stack *stack) {
 }
 
 /**
- * Cria struct de informação, aloca memória e define valor.
+ * Cria estrutura de informação.
  * 
- * Retorna pointer do Info criado. NULL caso falhe.
+ * Cria nova struct para armazenamento de informação,
+ * alocando memória e definindo valor do nó de dados.
+ * 
+ * @param i valor inteiro a ser guardado na estrutura de informação.
+ * @return Info* pointer, ou NULL caso falhe.
  */
 Info *stackinfo(int i) {
     Info *ptr;
@@ -61,9 +73,12 @@ Info *stackinfo(int i) {
 }
 
 /**
- * Cria nó, aloca memória e inicializa campos.
+ * Cria node.
  * 
- * Retorna pointer para nó criado. NULL caso falhe.
+ * Cria novo nó alocando memória e inicializando campos da
+ * estrutura de dados para uso posterior.
+ * 
+ * @return Node* pointer para nó criado, ou NULL caso falhe.
  */
 Node *stacknode() {
     Node *ptr;
@@ -78,18 +93,23 @@ Node *stacknode() {
 }
 
 /**
- * Verifica se uma pilha está vazia.
+ * Verifica se pilha está vazia.
  * 
- * TODO: Realizar verificação sem depender da variável size.
- * 
- * Retorna int. 1 caso esteja vazia, 0 caso contrário.
+ * @todo Realizar verificação sem depender da variável size.
+ * @param stack ponteiro Stack da pilha.
+ * @return int 1 caso vazia, 0 caso contrário.
  */
 int isemptystack(Stack *stack) {
     return (!stack || stack->size == 0);
 }
 
 /**
- * Imprime os elementos da fila.
+ * Imprime elementos de pilha.
+ * 
+ * Percorre uma pilha e imprime todos os seus
+ * elementos em linha.
+ * 
+ * @param stack ponteirro Stack para pilha.
  */
 void printstack(Stack *stack) {
     Node *ptr;
@@ -108,6 +128,10 @@ void printstack(Stack *stack) {
 
 /**
  * Empilha novo elemento.
+ * 
+ * @param stack ponteiro Stack da pilha.
+ * @param info ponteiro Info com informação a ser gravada em nó.
+ * @return int 1 para sucesso, 0 caso contrário.
  */
 int pushstack(Stack *stack, Info *info) {
     Node *ptr;
@@ -124,7 +148,10 @@ int pushstack(Stack *stack, Info *info) {
 }
 
 /**
- * Desempilha elemento mais recente da pilha.
+ * Desempilha elemento.
+ * 
+ * @param stack ponteiro Stack da pilha.
+ * @return Info* pointer do elemento removido, ou NULL caso falhe.
  */
 Info *popstack(Stack *stack) {
     Node *ptr;
@@ -139,13 +166,17 @@ Info *popstack(Stack *stack) {
     free(ptr);
     stack->size--;
     return info;
-
 }
 
 /**
- * Retorna int indicando tamanho da pilha. -1 caso lista não exista.
+ * Ver tamanho da pilha.
  * 
- * TODO: Realizar verificação de tamanho sem depender a variável size.
+ * Indica qual o tamanho da pilha usando informações
+ * contidas na cabeça da própria lista.
+ * 
+ * @todo Realizar verificação de tamanho sem depender a variável size.
+ * @param stack ponteiro Stack da pilha.
+ * @return int Número indicando tamanho da pilha. -1 caso pilha não exista.
  */
 int lenstack(Stack *stack) {
     if (!stack) return -1;
@@ -153,9 +184,14 @@ int lenstack(Stack *stack) {
 }
 
 /**
- * Verifica se uma determinada informação está contida na pilha.
+ * Verifica presença de informação na pilha.
  * 
- * Retorna int. 1 caso esteja contido, 0 caso contrário.
+ * Percorre a pilha para determinar se uma determinada
+ * informação está contida em algum ponto da pilha.
+ * 
+ * @param stack ponteiro Stack da pilha.
+ * @param info ponteiro Info com informação a ser buscada.
+ * @return int 1 caso exista na lista, 0 caso contrário.
  */
 int isinstack(Stack *stack, Info *info) {
     Node *ptr;

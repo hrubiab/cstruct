@@ -1,7 +1,7 @@
 /**
- * CStruct (2019) https://github.com/henriquerubia/cstruct
+ * CStruct (C) 2019-2021 https://github.com/henriquerubia/cstruct
  * 
- * Copyright (C) Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
+ * @author Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
  * 
  * See LICENSE for terms and licensing notice.
  */
@@ -11,9 +11,12 @@
 #include "linkedlist.h"
 
 /**
- * Cria cabeça de uma lista, aloca memória e inicializa campos da struct.
+ * Cria cabeça de lista.
  * 
- * Retorna pointer para lista criada.
+ * Essa função aloca memória e inicializa campos da struct
+ * para posterior utilização em lista encadeada.
+ * 
+ * @return List* pointer para lista criada.
  */
 List *createlst() {
     List *ptr;
@@ -27,9 +30,13 @@ List *createlst() {
     return NULL;
 }
 
-
 /**
- * Deleta uma lista e libera memória alocada para todos os nós na lista.
+ * Destroi lista.
+ * 
+ * Deleta uma lista encadeada liberando a memória alocada para
+ * a cabeça da lista e todos os nós que estão ligados a ela.
+ * 
+ * @param lst ponteiro List da lista encadeada.
  */
 void destroylst(List *lst) {
     Node *ptr;
@@ -46,20 +53,26 @@ void destroylst(List *lst) {
 }
 
 /**
- * Verifica se uma lista está vazia.
+ * Verifica se lista está vazia.
  * 
- * TODO: Realizar verificação sem depender da variável size.
- * 
- * Retorna int. 1 caso esteja vazia, 0 caso contrário.
+ * @todo Realizar verificação sem depender da variável size.
+ * @param lst ponteiro List da lista encadeada.
+ * @return int 1 caso vazia, 0 caso contrário.
  */
 int isemptylst(List *lst) {
     return (!lst || lst->size == 0);
 }
 
 /**
- * Retorna em qual posiçãop da lista está uma daterminada informação.
+ * Verifica posição de informação.
  * 
- * Retorna int positivo indicando posição. -1 caso não exista.
+ * Percorre a lista encadeada para determinar em qual posição
+ * está contida uma daterminada informação, caso exista.
+ * 
+ * @param lst ponteiro List da lista encadeada.
+ * @param info ponteiro Info com informação a ser buscada.
+ * @return int Número positivo indicando qual posição da informação. 
+ *             -1 caso não seja encontrada.
  */
 int positionlst(List *lst, Info *info) {
     int pos;
@@ -78,9 +91,14 @@ int positionlst(List *lst, Info *info) {
 }
 
 /**
- * Verifica se uma determinada informação está contida na lista.
+ * Verifica presença de informação na lista.
  * 
- * Retorna int. 1 caso esteja contido, 0 caso contrário.
+ * Percorre a lista encadeada para determinar se uma determinada
+ * informação está contida em algum ponto da lista.
+ * 
+ * @param lst ponteiro List da lista encadeada.
+ * @param info ponteiro Info com informação a ser buscada.
+ * @return int 1 caso exista na lista, 0 caso contrário.
  */
 int isinlst(List *lst, Info *info) {
     Node *ptr;
@@ -95,9 +113,15 @@ int isinlst(List *lst, Info *info) {
 }
 
 /** 
- * Encontra e retorna um elemento na lista.
+ * Encontra informação na lista.
  * 
- * Retorna pointer do nó encontrado. NULL caso não exista.
+ * Percorre a lista encadeada para encontrar e retornar um
+ * elemento da lista compatível com os dados solicitados,
+ * caso exista.
+ * 
+ * @param lst ponteiro List da lista encadeada.
+ * @param info ponteiro Info com informação a ser buscada. 
+ * @return Info* pointer contendo nó encontrado, ou NULL caso não exista.
  */
 Info *findlst(List *lst, Info *info) {
     Node *ptr;
@@ -111,9 +135,14 @@ Info *findlst(List *lst, Info *info) {
 }
 
 /**
- * Retorna int indicando tamanho da lista. -1 caso lista não exista.
+ * Ver tamanho da lista.
  * 
- * TODO: Realizar verificação de tamanho sem depender a variável size.
+ * Indica qual o tamanho da lista encadeada usando informações
+ * contidas na cabeça da própria lista.
+ * 
+ * @todo Realizar verificação de tamanho sem depender a variável size.
+ * @param lst ponteiro List da lista encadeada.
+ * @return int Número indicando tamanho da lista. -1 caso lista não exista.
  */
 int lenlst(List *lst) {
     if (!lst) return -1;
@@ -121,7 +150,12 @@ int lenlst(List *lst) {
 }
 
 /**
- * Imprime elementos de uma dada lista.
+ * Imprime elementos de lista.
+ * 
+ * Percorre uma lista encadeada e imprime todos os seus
+ * elementos em linha.
+ * 
+ * @param lst ponteirro List para lista encadeada.
  */
 void printlst(List *lst) {
     Node *ptr;
@@ -139,9 +173,12 @@ void printlst(List *lst) {
 }
 
 /**
- * Cria nó, aloca memória e inicializa campos.
+ * Cria node.
  * 
- * Retorna pointer para nó criado. NULL caso falhe.
+ * Cria novo nó alocando memória e inicializando campos da
+ * estrutura de dados para uso posterior.
+ * 
+ * @return Node* pointer para nó criado, ou NULL caso falhe.
  */
 Node *lstnode() {
     Node *ptr;
@@ -156,9 +193,13 @@ Node *lstnode() {
 }
 
 /**
- * Cria struct de informação, aloca memória e define valor.
+ * Cria estrutura de informação.
  * 
- * Retorna pointer do Info criado. NULL caso falhe.
+ * Cria nova struct para armazenamento de informação,
+ * alocando memória e definindo valor do nó de dados.
+ * 
+ * @param i valor inteiro a ser guardado na estrutura de informação.
+ * @return Info* pointer, ou NULL caso falhe.
  */
 Info *lstinfo(int i) {
     Info *ptr;
@@ -172,9 +213,11 @@ Info *lstinfo(int i) {
 }
 
 /**
- * Insere nó no começo da lista.
+ * Insere nó no inicio da lista.
  * 
- * Retorna int. 1 para sucesso, 0 caso contrário.
+ * @param lst ponteiro List da lista encadeada.
+ * @param info ponteiro Info com informação a ser gravada em nó.
+ * @return int 1 para sucesso, 0 caso contrário.
  */
 int insertfirstlst(List *lst, Info *info) {
     Node *ptr;
@@ -192,7 +235,9 @@ int insertfirstlst(List *lst, Info *info) {
 /**
  * Insere nó no fim da lista.
  * 
- * Retorna int. 1 para sucesso, 0 caso contrário.
+ * @param lst ponteiro List da lista encadeada.
+ * @param info ponteiro Info com informação a ser gravado em nó.
+ * @return int 1 para sucesso, 0 caso contrário.
  */
 int insertlastlst(List *lst, Info *info) {
     Node *ptr, *aux;
@@ -214,9 +259,10 @@ int insertlastlst(List *lst, Info *info) {
 }
 
 /**
- * Remove o elemento na primeira posição da lista.
+ * Remove primeiro elemento da lista.
  * 
- * Retorna Info do elemento removido. NULL caso falhe.
+ * @param lst ponteiro List para lista encadeada.
+ * @return Info* pointer do elemento removido, ou NULL caso falhe.
  */
 Info *delfirstlst(List *lst) {
     Node *ptr;
@@ -235,9 +281,11 @@ Info *delfirstlst(List *lst) {
 }
 
 /**
- * Remove elemento da lista que contém determinada informação.
+ * Remove elemento da lista a partir de informação armazenada.
  * 
- * Retorna Info do elemento removido. NULL caso falhe.
+ * @param lst ponteiro List da lista encadeada.
+ * @param info ponteiro Info com informação a ser gravada em nó.
+ * @return Info* do elemento removido, ou NULL caso falhe.
  */
 Info *delinfolst(List *lst, Info *info) {
     Node *ptr, *aptr;
@@ -263,9 +311,11 @@ Info *delinfolst(List *lst, Info *info) {
 }
 
 /**
- * Remove da lista o elemento em determinada posição.
+ * Remove elemento em uma posição da lista.
  * 
- * Retorna Info do elemento removido. NULL caso falhe.
+ * @param lst ponteiro List da lista encadeada.
+ * @param pos inteiro com posição a ser removida.
+ * @return Info* do elemento removido, ou NULL caso falhe.
  */
 Info *delpositionlst(List *lst, int pos) {
     Node *aptr, *ptr;
@@ -296,6 +346,8 @@ Info *delpositionlst(List *lst, int pos) {
 
 /**
  * Inverte a lista encadeada.
+ * 
+ * @param lst ponteiro List da lista encadeada.
  */
 void reverselst(List *lst) {
     Node *prev = NULL;
@@ -315,7 +367,12 @@ void reverselst(List *lst) {
 }
 
 /**
- * Realiza ordenação da lista usando algoritmo de ordenação bubble sort.
+ * Ordena lista.
+ * 
+ * Realiza ordenação da lista utilizando o algoritmo de
+ * ordenação bubble sort.
+ * 
+ * @param lst ponteiro List da lista encadeada.
  */
 void sortlst(List *lst) {
     int i, j, k;
@@ -342,9 +399,10 @@ void sortlst(List *lst) {
 }
 
 /**
- * Remove o elemento na última posição da lista.
+ * Remove elemento na última posição da lista.
  *
- * Retorna Info do elemento removido. NULL caso falhe.
+ * @param lst ponteiro List da lista encadeada.s
+ * @return Info* pointer do elemento removido, ou NULL caso falhe.
  */
 Info *dellastlst(List *lst) {
     Node *ptr, *aptr;

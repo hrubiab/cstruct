@@ -1,7 +1,7 @@
 /**
- * CStruct (2019) https://github.com/henriquerubia/cstruct
+ * CStruct (C) 2019-2021 https://github.com/henriquerubia/cstruct
  * 
- * Copyright (C) Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
+ * @author Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
  * 
  * See LICENSE for terms and licensing notice.
  */

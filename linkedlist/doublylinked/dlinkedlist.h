@@ -1,7 +1,7 @@
 /**
- * CStruct (2019) https://github.com/henriquerubia/cstruct
+ * CStruct (C) 2019-2021 https://github.com/henriquerubia/cstruct
  * 
- * Copyright (C) Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
+ * @author Carlos Henrique Rubia Barbosa <carlos.h.barbosa@edu.ufes.br>
  * 
  * See LICENSE for terms and licensing notice.
  */
@@ -28,94 +28,142 @@ typedef struct {
 } Dlist;
 
 /**
- * Cria cabeça da lista, aloca memória e inicializa campos da struct.
+ * Cria cabeça de lista.
  * 
- * Returna pointer para lista criada.
+ * Essa função aloca memória e inicializa campos da struct
+ * para posterior utilização em lista encadeada.
+ * 
+ * @return Dlist* pointer para lista criada.
  */
 Dlist *createdlst();
 
 /**
- * Verifica se a lista está vazia.
+ * Verifica se lista está vazia.
  * 
- * Retorna int. 1 se estiver vazia, 0 caso contrário.
+ * @todo Realizar verificação sem depender da variável size.
+ * @param lst ponteiro Dlist da lista encadeada.
+ * @return int 1 caso vazia, 0 caso contrário.
  */
 int isemptydlst(Dlist *lst);
 
 /**
- * Cria nó, aloca memória e inicializa campos.
+ * Cria node.
  * 
- * Retorna pointer para nó criado. NULL caso falhe.
+ * Cria novo nó alocando memória e inicializando campos da
+ * estrutura de dados para uso posterior.
+ * 
+ * @return Node* pointer para nó criado, ou NULL caso falhe.
  */
 Node *dlstnode();
 
 /**
- * Cria struct de informação, aloca memória e define valor.
+ * Cria estrutura de informação.
  * 
- * Retorna pointer do Info criado. NULL caso falhe.
+ * Cria nova struct para armazenamento de informação,
+ * alocando memória e definindo valor do nó de dados.
+ * 
+ * @param i valor inteiro a ser guardado na estrutura de informação.
+ * @return Info* pointer, ou NULL caso falhe.
  */
 Info *dlstinfo(int i);
 
 /**
- * Insere elemento na primeira posição da lista.
+ * Insere nó no inicio da lista.
  * 
- * Retorna int. 1 para sucesso, 0 caso contrário.
+ * @param lst ponteiro Dlist da lista encadeada.
+ * @param info ponteiro Info com informação a ser gravada em nó.
+ * @return int 1 para sucesso, 0 caso contrário.
  */
 int insertfirstdlst(Dlist *lst, Info *info);
 
 /**
- * Deleta primeiro elemento da lista.
+ * Remove primeiro elemento da lista.
  * 
- * Retorna pointer para Info do elemento removido. NULL caso falhe.
+ * @param lst ponteiro Dlist para lista encadeada.
+ * @return Info* pointer do elemento removido, ou NULL caso falhe.
  */
 Info *delfirstdlst(Dlist *lst);
 
 /**
- * Insere novo elemento na lista encadeada.
+ * Insere nó em uma posição da lista.
  * 
- * Retorna int. 1 para sucesso, 0 caso contrário.
+ * @param lst ponteiro Dlist da lista encadeada.
+ * @param info ponteiro Info com informação a ser gravada em nó.
+ * @param pos posição para inserir o nó.
+ * @return int 1 para sucesso, 0 caso contrário.
  */
 int insertposdlst(Dlist *lst, Info *info, int pos);
 
 /**
- * Deleta elemento em posição específica da lista.
+ * Remove elemento em uma posição da lista.
  * 
- * Retorna pointer para Info do elemento removido. NULL caso falhe.
+ * @param lst ponteiro Dlist da lista encadeada.
+ * @param pos inteiro com posição a ser removida.
+ * @return Info* do elemento removido, ou NULL caso falhe.
  */
 Info *delposdlst(Dlist *lst, int pos);
 
 /**
- * Deleta uma lista e libera memória alocada para seus nós.
+ * Destroi lista.
+ * 
+ * Deleta uma lista encadeada liberando a memória alocada para
+ * a cabeça da lista e todos os nós que estão ligados a ela.
+ * 
+ * @param lst ponteiro Dlist da lista encadeada.
  */
 void destroydlst(Dlist *lst);
 
 /**
- * Inverte a lista.
+ * Inverte a lista encadeada.
+ * 
+ * @param lst ponteiro Dlist da lista encadeada.
  */
 void reversedlst(Dlist *lst);
 
 /**
- * Imprime elementos de uma lista.
+ * Imprime elementos de lista.
+ * 
+ * Percorre uma lista encadeadaa e imprime todos os seus
+ * elementos em linha.
+ * 
+ * @param lst ponteiro Dlist para lista encadeada.
  */
 void printdlst(Dlist *lst);
 
 /**
- * Retorna int indicando tamanho da lista. -1 caso lista não exista.
+ * Ver tamanho da lista.
  * 
- * TODO: Realizar verificação de tamanho sem depender a variável size.
+ * Indica qual o tamanho da lista encadeada usando informações
+ * contidas na cabeça da própria lista.
+ * 
+ * @todo Realizar verificação de tamanho sem depender a variável size.
+ * @param lst ponteiro Dlist da lista encadeada.
+ * @return int Número indicando tamanho da lista. -1 caso lista não exista.
  */
 int lendlst(Dlist *lst);
 
 /** 
- * Encontra e retorna um elemento na lista.
+ * Encontra informação na lista.
  * 
- * Retorna pointer do nó encontrado. NULL caso não exista.
+ * Percorre a lista encadeada para encontrar e retornar um
+ * elemento da lista compatível com os dados solicitados,
+ * caso exista.
+ * 
+ * @param lst ponteiro Dlist da lista encadeada.
+ * @param info ponteiro Info com informação a ser buscada. 
+ * @return Info* pointer contendo nó encontrado, ou NULL caso não exista.
  */
 Info *finddlst(Dlist *lst, Info *info);
 
 /**
- * Verifica se uma determinada informação está contida na lista.
+ * Verifica presença de informação na lista.
  * 
- * Retorna int. 1 caso esteja contido, 0 caso contrário.
+ * Percorre a lista encadeada para determinar se uma determinada
+ * informação está contida em algum ponto da lista.
+ * 
+ * @param lst ponteiro Dlist da lista encadeada.
+ * @param info ponteiro Info com informação a ser buscada.
+ * @return int 1 caso exista na lista, 0 caso contrário.
  */
 int isindlst(Dlist *lst, Info *info);
 
